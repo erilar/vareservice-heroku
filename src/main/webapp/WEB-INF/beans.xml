@@ -28,6 +28,6 @@ http://cxf.apache.org/schemas/jaxrs.xsd">
 		</jaxrs:extensionMappings>
 	</jaxrs:server>
 
-	<bean id="serviceImpl" class="no.andsim.service.VareServiceRS" />
+	<bean id="serviceImpl" class="no.andsim.service.VareServiceRSImpl" />
 
 </beans>

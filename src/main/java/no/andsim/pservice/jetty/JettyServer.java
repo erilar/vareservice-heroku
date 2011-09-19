@@ -1,4 +1,4 @@
-package no.andsim.jetty;
+package no.andsim.pservice.jetty;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;

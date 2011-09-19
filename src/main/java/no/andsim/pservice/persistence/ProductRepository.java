@@ -1,4 +1,4 @@
-package no.andsim.persistence;
+package no.andsim.pservice.persistence;
 
 
 import java.util.ArrayList;

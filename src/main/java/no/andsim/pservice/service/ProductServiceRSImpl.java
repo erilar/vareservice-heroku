@@ -1,6 +1,6 @@
-package no.andsim.service;
+package no.andsim.pservice.service;
 
-import no.andsim.persistence.ProductRepository;
+import no.andsim.pservice.persistence.ProductRepository;
 import no.productservice.andsim.product.Product;
 import no.productservice.andsim.productlist.ProductList;
 

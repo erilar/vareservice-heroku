@@ -14,11 +14,11 @@
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-http.xml" />
 
-	<context:component-scan base-package="no.andsim.service" />
+	<context:component-scan base-package="no.andsim.pservice.service" />
 
 <!-- SOAP and XML Service -->
 
-	<jaxws:endpoint id="productService" implementor="no.andsim.service.ProductServiceImpl"
+	<jaxws:endpoint id="productService" implementor="no.andsim.pservice.service.ProductServiceImpl"
 		address="/ProductService" />
 		
 <!-- REST and JASON Service -->

@@ -113,7 +113,7 @@
 					<generateRepository>false</generateRepository>
 					<programs>
 						<program>
-							<mainClass>no.andsim.jetty.JettyServer</mainClass>
+							<mainClass>no.andsim.pservice.jetty.JettyServer</mainClass>
 							<name>webapp</name>
 						</program>
 					</programs>

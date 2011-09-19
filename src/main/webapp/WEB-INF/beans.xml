@@ -18,12 +18,12 @@
 
 <!-- SOAP and XML Service -->
 
-	<jaxws:endpoint id="vareService" implementor="no.andsim.service.VareServiceImpl"
-		address="/VareService" />
+	<jaxws:endpoint id="productService" implementor="no.andsim.service.ProductServiceImpl"
+		address="/ProductService" />
 		
 <!-- REST and JASON Service -->
 
-	<jaxrs:server id="vareServiceRS" address="/VareServiceRS">
+	<jaxrs:server id="productServiceRS" address="/ProductServiceRS">
 		<jaxrs:features>
 			<cxf:logging />
 		</jaxrs:features>
@@ -32,7 +32,7 @@
 			<ref bean="jsonProvider" />
 		</jaxrs:providers>
 		<jaxrs:serviceBeans>
-			<ref bean="VareServiceRS" />
+			<ref bean="ProductServiceRS" />
 		</jaxrs:serviceBeans>
 	</jaxrs:server>
 
@@ -40,8 +40,8 @@
 	<bean id="schemaHandler" class="org.apache.cxf.jaxrs.utils.schemas.SchemaHandler">
 		<property name="schemas">
 			<util:list>
-				<value>classpath:Vare.xsd</value>
-				<value>classpath:VareList.xsd</value>
+				<value>classpath:Product.xsd</value>
+				<value>classpath:ProductList.xsd</value>
 			</util:list>
 		</property>
 	</bean>
@@ -51,8 +51,8 @@
 	<bean id="jsonProvider" class="org.apache.cxf.jaxrs.provider.JSONProvider">
 		<property name="namespaceMap">
 			<util:map map-class="java.util.Hashtable">
-				<entry key="http://andsim.vareservice.no/Vare" value="" />
-				<entry key="http://andsim.vareservice.no/VareList" value="" />
+				<entry key="http://andsim.productservice.no/Product" value="" />
+				<entry key="http://andsim.productservice.no/ProductList" value="" />
 			</util:map>
 		</property>
 		<property name="schemaHandler" ref="schemaHandler" />

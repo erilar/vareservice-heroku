@@ -1,8 +1,6 @@
 package no.andsim.pservice.service;
 
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -27,9 +25,5 @@ public interface ProductServiceRS {
 	@Path("/product/{barcode}")
 	@Produces("application/xml")
 	public abstract Product getProduct(@PathParam("barcode") String barcode);
-
-	@GET
-	@Path("/raw")
-	List<Product> listProductsRaw();
 
 }

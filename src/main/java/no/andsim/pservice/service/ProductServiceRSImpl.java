@@ -1,7 +1,5 @@
 package no.andsim.pservice.service;
 
-import java.util.List;
-
 import no.andsim.pservice.persistence.ProductRepository;
 import no.productservice.andsim.product.Product;
 import no.productservice.andsim.productlist.ProductList;
@@ -30,11 +28,6 @@ public class ProductServiceRSImpl implements ProductServiceRS {
 	@Override
 	public Product getProduct(String barcode) {
 		return REPO.getProduct(Long.parseLong(barcode));
-	}
-
-	@Override
-	public List<Product> listProductsRaw() {
-		return REPO.getProductList();
 	}
 
 }

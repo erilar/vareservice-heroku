@@ -23,7 +23,6 @@ public interface ProductServiceRS {
 
 	@GET
 	@Path("/product/{barcode}")
-	@Produces("application/xml")
 	public abstract Product getProduct(@PathParam("barcode") String barcode);
 
 }

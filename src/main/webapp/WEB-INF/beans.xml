@@ -45,6 +45,8 @@
 			</util:list>
 		</property>
 	</bean>
+	
+	
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider">
 		<property name="schemaHandler" ref="schemaHandler" />
 	</bean>

@@ -29,6 +29,7 @@
 		</jaxrs:features>
 		<jaxrs:providers>
 			<ref bean="jsonProvider" />
+			<ref bean="jaxbProvider" />
 		</jaxrs:providers>
 		<jaxrs:serviceBeans>
 			<ref bean="ProductServiceRS" />

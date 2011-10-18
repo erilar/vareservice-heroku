@@ -1,4 +1,4 @@
-package no.andsim.pservice.service;
+package no.itera.pservice.service;
 
 import javax.jws.WebService;
 

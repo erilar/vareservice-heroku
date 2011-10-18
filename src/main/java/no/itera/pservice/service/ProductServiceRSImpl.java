@@ -1,6 +1,6 @@
-package no.andsim.pservice.service;
+package no.itera.pservice.service;
 
-import no.andsim.pservice.persistence.ProductRepository;
+import no.itera.pservice.persistence.ProductRepository;
 import no.productservice.andsim.product.Product;
 import no.productservice.andsim.productlist.ProductList;
 

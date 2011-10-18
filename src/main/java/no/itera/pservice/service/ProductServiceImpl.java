@@ -1,14 +1,14 @@
 
-package no.andsim.pservice.service;
+package no.itera.pservice.service;
 
 
 import javax.jws.WebService;
 
-import no.andsim.pservice.persistence.ProductRepository;
+import no.itera.pservice.persistence.ProductRepository;
 import no.productservice.andsim.product.Product;
 import no.productservice.andsim.productlist.ProductList;
 
-@WebService(endpointInterface = "no.andsim.pservice.service.ProductService")
+@WebService(endpointInterface = "no.itera.pservice.service.ProductService")
 public class ProductServiceImpl implements ProductService {
 
 	private static final ProductRepository REPO = ProductRepository.getProductRepository();

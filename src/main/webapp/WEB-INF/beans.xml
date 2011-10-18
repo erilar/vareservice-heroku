@@ -3,25 +3,31 @@
 	xmlns:cxf="http://cxf.apache.org/core" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:http="http://cxf.apache.org/transports/http/configuration"
+	xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+	xmlns:sec="http://cxf.apache.org/configuration/security"
 	xsi:schemaLocation="http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
-		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		 http://www.springframework.org/schema/beans                 http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://cxf.apache.org/transports/http/configuration         http://cxf.apache.org/schemas/configuration/http-conf.xsd
+        http://cxf.apache.org/transports/http-jetty/configuration   http://cxf.apache.org/schemas/configuration/http-jetty.xsd
+        http://cxf.apache.org/configuration/security                http://cxf.apache.org/schemas/configuration/security.xsd">
 
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-http.xml" />
 
-	<context:component-scan base-package="no.andsim.pservice.service" />
+	<context:component-scan base-package="no.itera.pservice.service" />
 
-<!-- SOAP and XML Service -->
+	<!-- SOAP and XML Service -->
 
-	<jaxws:endpoint id="productService" implementor="no.andsim.pservice.service.ProductServiceImpl"
-		address="/ProductService" />
-		
-<!-- REST and JASON Service -->
+	<jaxws:endpoint id="productService"
+		implementor="no.itera.pservice.service.ProductServiceImpl" address="/ProductService" />
+
+	<!-- REST and JASON Service -->
 
 	<jaxrs:server id="productServiceRS" address="/ProductServiceRS">
 		<jaxrs:features>
@@ -37,6 +43,7 @@
 	</jaxrs:server>
 
 
+	<!-- Schema handler -->
 	<bean id="schemaHandler" class="org.apache.cxf.jaxrs.utils.schemas.SchemaHandler">
 		<property name="schemas">
 			<util:list>
@@ -45,8 +52,9 @@
 			</util:list>
 		</property>
 	</bean>
-	
-	
+
+	<!-- Representation Providers -->
+
 	<bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider">
 		<property name="schemaHandler" ref="schemaHandler" />
 	</bean>
@@ -54,10 +62,28 @@
 		<property name="namespaceMap">
 			<util:map map-class="java.util.Hashtable">
 				<entry key="http://andsim.productservice.no/Product" value="p" />
-				<entry key="http://andsim.productservice.no/ProductList" value="l" />
+				<entry key="http://andsim.productservice.no/ProductList"
+					value="l" />
 			</util:map>
 		</property>
 		<property name="schemaHandler" ref="schemaHandler" />
 	</bean>
+
+	<!-- Security -->
+	<httpj:engine-factory id="port-9095-tls-config">
+		<httpj:engine port="9095">
+			<httpj:tlsServerParameters>
+				<sec:keyManagers keyPassword="romavictor1054">
+					<sec:keyStore type="JKS" password="romavictor1054"
+						file="certs/productServiceKeystore.jks" />
+				</sec:keyManagers>
+				<sec:trustManagers>
+					<sec:keyStore type="JKS" password="romavictor1054"
+						file="certs/productServiceTrustKeystore.jks" />
+				</sec:trustManagers>
+			</httpj:tlsServerParameters>
+		</httpj:engine>
+	</httpj:engine-factory>
+
 
 </beans>
